@@ -3,21 +3,19 @@ import './App.css'
 
 import Home from './pages/Home'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import TaskList from './pages/TaskList'
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
 
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home/>
-          <List listData={listData} />
-        </Route>
-        <Route path="/details/:title">
-          <DetailsPage listData={listData} />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="tasklist" element={<TaskList />} />
+      </Routes>
     </Router>
   )
 }
