@@ -1,5 +1,5 @@
-import React from 'react'
-import CalenderBox from '../components/CalenderBox'
+
+import CalenderBox from '../components/CalenderBox.tsx'
 
 function Home() {
   return (

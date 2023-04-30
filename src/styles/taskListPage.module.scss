@@ -1,8 +1,6 @@
 /*** FONTS ***/
 @import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
 
-
-
 /*** VARIABLES ***/
 /* Colors */
 $black: #1d1f20;
@@ -11,15 +9,12 @@ $green: #a2ed56;
 $yellow: #fddc32;
 $white: #fafafa;
 
-
-
 /*** EXTEND ***/
 /* box-shadow */
 %boxshadow {
-  box-shadow: 0.25rem 0.25rem 0.6rem rgba(255, 255, 255, 0.98), 0 0.5rem 1.125rem rgba(216, 216, 216, 0.7);
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(255, 255, 255, 0.98),
+    0 0.5rem 1.125rem rgba(216, 216, 216, 0.7);
 }
-
-
 
 /*** STYLE ***/
 *,
@@ -28,14 +23,14 @@ $white: #fafafa;
   box-sizing: border-box;
 }
 
-
 .mainbox {
   display: block;
   margin: 0 auto;
   max-width: 40rem;
   padding: 1rem;
+  color: $black;
+  font-family: "Raleway", sans-serif;
 }
-
 
 ol.gradientlist {
   counter-reset: gradient-counter;
@@ -48,20 +43,24 @@ ol.gradientlist {
     @extend %boxshadow;
     counter-increment: gradient-counter;
     margin-top: 1rem;
+    overflow-wrap: break-word;
     min-height: 3rem;
     padding: 1rem 1rem 1rem 3rem;
     position: relative;
     &::before,
     &::after {
-      background: linear-gradient(135deg, $blue 0%,$green 100%);
+      background: linear-gradient(135deg, $blue 0%, $green 100%);
       border-radius: 1rem 1rem 0 1rem;
-      content: '';
+      content: "";
       height: 3rem;
       left: -1rem;
       overflow: hidden;
       position: absolute;
       top: -1rem;
       width: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     &::before {
       align-items: flex-end;
@@ -69,23 +68,34 @@ ol.gradientlist {
       content: counter(gradient-counter);
       color: $black;
       display: flex;
-      font: 900 1.5em/1 'Montserrat';
+      font: 900 1.5em/1 "Montserrat";
       justify-content: flex-end;
       padding: 0.125em 0.25em;
       z-index: 1;
     }
     @for $i from 1 through 5 {
-      &:nth-child(10n+#{$i}):before {
-        background: linear-gradient(135deg, rgba($green, $i * 0.2) 0%,rgba($yellow, $i * 0.2) 100%);
+      &:nth-child(10n + #{$i}):before {
+        background: linear-gradient(
+          135deg,
+          rgba($green, $i * 0.2) 0%,
+          rgba($yellow, $i * 0.2) 100%
+        );
       }
     }
     @for $i from 6 through 10 {
-      &:nth-child(10n+#{$i}):before {
-        background: linear-gradient(135deg, rgba($green, 1 - (($i - 5) * 0.2)) 0%,rgba($yellow, 1 - (($i - 5) * 0.2)) 100%);
+      &:nth-child(10n + #{$i}):before {
+        background: linear-gradient(
+          135deg,
+          rgba($green, 1 - (($i - 5) * 0.2)) 0%,
+          rgba($yellow, 1 - (($i - 5) * 0.2)) 100%
+        );
       }
     }
     + li {
       margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
