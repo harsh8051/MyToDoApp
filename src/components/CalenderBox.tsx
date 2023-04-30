@@ -1,4 +1,3 @@
-import React from "react";
 import calenderBox from '../styles/calenderBox.module.css'
 
 function CalenderBox() {
