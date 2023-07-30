@@ -1,26 +1,23 @@
 import calenderBox from '../styles/calenderBox.module.css'
-
+import {getNameofMonth,daysOfWeek} from '../utility/calenderMetaData'
 function CalenderBox() {
-  const days = Array.from({ length: 30 }, (_, i) => i + 1);
-  const today = new Date().getDate();
+  const date = new Date();
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  
 
   return (
     <div className={calenderBox.calendar}>
       <div className={calenderBox.header}>
-        <h1>April 2023</h1>
+        <h1>{getNameofMonth(date.getMonth())} {date.getFullYear()}</h1>
       </div>
       <div className={calenderBox.weekdays}>
-        <div>Sun</div>
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
+      {daysOfWeek.map((day, index) => (
+          <div key={index}>{day}</div>
+        ))}
       </div>
       <div className={calenderBox.days}>
         {days.map((day) => (
-          <div className={day > today ? calenderBox.dayActive : calenderBox.day } key={day}>
+          <div className={day > date.getDay() ? calenderBox.dayActive : calenderBox.day } key={day}>
             {day}
           </div>
         ))}
